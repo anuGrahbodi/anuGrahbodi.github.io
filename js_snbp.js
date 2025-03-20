@@ -168,4 +168,11 @@
                 window.location.href = "https://s.id/CodeFestUSU"
             }
         }
+
+        function otodu() {
+            var result = confirm("Merah di SNBP? Ga tau cara mulai SNBT? Educomms by OTODU siap bantu kamu! Ini btw dari author dan 100% free, isi aja formnya sungguh sungguh dan join grup whatsapp untuk komunikasi antar peserta UTBK Educomms lainnya! (forms.gle)");
+            if (result) {
+                window.location.href = "https://forms.gle/deCc9oNN8FgUBnQZ9"
+            }
+        }
     
