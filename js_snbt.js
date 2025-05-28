@@ -106,9 +106,9 @@ function playLatch() {
             if(document.getElementById('iprodicode').value.length < 3){
                 document.getElementById('iprodicode').value = '271'
             }
-            capital('iuniv')
+            /*capital('iuniv')
             capital('iprodi')
-            capital('iname')
+            capital('iname')*/
             var inope = document.getElementById('inope').value
             document.getElementById('no-peserta-diterima').textContent = `${inope.substring(0,2)} - ${inope.substring(2, 6)} - ${inope.substring(6)}`
             var input = ['iname', 'iunivcode', 'iuniv', 'iprodicode', 'iprodi', 'iunivcode']
