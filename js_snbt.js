@@ -67,8 +67,8 @@ function playLatch() {
         }
             function limitDigit(boxId){
             document.getElementById(boxId).addEventListener("input", function() {
-                if (this.value.length > 3) {
-                    this.value = this.value.slice(0,3)
+                if (this.value.length > 4) {
+                    this.value = this.value.slice(0,4)
                 }
                 this.value = this.value.replace(/[^0-9]/g, '')
             })}
