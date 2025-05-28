@@ -94,9 +94,9 @@ function playLatch() {
         }
         }
 
-        function capital(elementId) {
+        /*function capital(elementId) {
             document.getElementById(elementId).value = document.getElementById(elementId).value.toUpperCase()
-        }
+        }*/
 
         function displayOutput(){
             if(document.getElementById('inope').value.length < 1){
