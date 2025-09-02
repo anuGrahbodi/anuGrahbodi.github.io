@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sipil Jaga Sipil</title>
+  <style>
+    body {
+      background-color: #f784c5;
+      color: #1b602f;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-weight: bold;
+    }
+    .preview canvas {
+      max-width: 90%;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #1b602f;
+      color: #f784c5;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    input[type="file"] {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>#SipilJagaSipil</h1>
+  <p>Web ini untuk mengubah foto kamu menjadi Duotone Hijau dan Merah Muda. Semua proses terjadi secara offline dan tidak ada data dikirim ke luar :></p>  
+
+  <input type="file" id="upload" accept="image/*">
+  <div class="preview">
+    <canvas id="canvas"></canvas>
+  </div>
+  
+  <button id="invertBtn" style="display:none;">Invert Duotone</button>
+  <button id="downloadBtn" style="display:none;">Unduh Gambar!</button>  
+
+  <script>
+    const upload = document.getElementById('upload');
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const invertBtn = document.getElementById('invertBtn');
+
+    let originalImg = null;
+    let isInverted = false;
+
+    upload.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+
+      img.onload = () => {
+        const maxWidth = 400;
+        const scale = Math.min(maxWidth / img.width, 1);
+        const width = img.width * scale;
+        const height = img.height * scale;
+
+        canvas.width = width;
+        canvas.height = height;
+        ctx.drawImage(img, 0, 0, width, height);
+
+        originalImg = img;
+        applyDuotone();
+
+        downloadBtn.style.display = 'inline-block';
+        invertBtn.style.display = 'inline-block';
+      }
+    });
+
+    function applyDuotone(invert = false) {
+      ctx.drawImage(originalImg, 0, 0, canvas.width, canvas.height);
+
+      let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      let data = imageData.data;
+
+      for (let i = 0; i < data.length; i += 4) {
+        let grayscale = (data[i] + data[i+1] + data[i+2]) / 3;
+        let t = grayscale / 255;
+
+        if (!invert) {
+          data[i]   = (1-t)*0xf7 + t*0x1b;
+          data[i+1] = (1-t)*0x84 + t*0x60;
+          data[i+2] = (1-t)*0xc5 + t*0x2f;
+        } else {
+          data[i]   = (1-t)*0x1b + t*0xf7;
+          data[i+1] = (1-t)*0x60 + t*0x84;
+          data[i+2] = (1-t)*0x2f + t*0xc5;
+        }
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+    }
+
+    invertBtn.addEventListener('click', () => {
+      isInverted = !isInverted;
+      applyDuotone(isInverted);
+      invertBtn.textContent = isInverted ? "Normal Duotone" : "Invert Duotone";
+    });
+
+    downloadBtn.addEventListener('click', () => {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL("image/png");
+      link.download = "dukungan.png";
+      link.click();
+    });
+  </script>
+</body>
+</html>
