@@ -1,17 +1,48 @@
         function playLatch() {
-            var latch = document.getElementById("latch-screen")
-            var iframe = latch.querySelector("iframe")
+    var latch = document.getElementById("latch-screen");
+    var pamungkas = document.getElementById("pamungkas-screen");
+
+    // Hapus pamungkas jika ada
+    var pamIframe = pamungkas.querySelector("iframe");
+    if (pamIframe) pamungkas.removeChild(pamIframe);
+
+    // Toggle latch
+    var iframe = latch.querySelector("iframe");
+    if (iframe) {
+        latch.removeChild(iframe);
+    } else {
+        iframe = document.createElement("iframe");
+        iframe.width = "100%";
+                iframe.height = "100";
+                iframe.scrolling = "no";
+        iframe.frameBorder = "no";
+                iframe.allow = "autoplay";
+                iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/975902716&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false";
+                latch.appendChild(iframe);
+                    }
+}
+                
+                function playPamungkas() {
+            var latch = document.getElementById("latch-screen");
+            var pamungkas = document.getElementById("pamungkas-screen");
+        
+            // Hapus latch jika ada
+            var latchIframe = latch.querySelector("iframe");
+            if (latchIframe) latch.removeChild(latchIframe);
+        
+            // Toggle pamungkas
+            var iframe = pamungkas.querySelector("iframe");
             if (iframe) {
-                latch.removeChild(iframe)
+                pamungkas.removeChild(iframe);
             } else {
-                iframe = document.createElement("iframe")
-                iframe.width = "100%"
-                iframe.height = "100"
-                iframe.scrolling = "no"
-                iframe.frameborder = "yes"
-                iframe.allow = "autoplay"
-                iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/975902716&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
-                latch.appendChild(iframe)
+                iframe = document.createElement("iframe");
+                iframe.width = "100%";
+                iframe.height = "100";
+                iframe.scrolling = "no";
+                iframe.frameBorder = "no";
+                iframe.allow = "autoplay";
+                iframe.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/licooys/pamungkas-monolog%3Fin%3Dtb-yt/sets/o&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false";
+                pamungkas.appendChild(iframe);
             }
         }
         function goComment(){
