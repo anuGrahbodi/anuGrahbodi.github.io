@@ -1,29 +1,4 @@
-function playLatch() {
-    var latch = document.getElementById("latch-screen");
-    var pamungkas = document.getElementById("pamungkas-screen");
-
-    // Hapus pamungkas jika ada
-    var pamIframe = pamungkas.querySelector("iframe");
-    if (pamIframe)
-        pamungkas.removeChild(pamIframe);
-
-    // Toggle latch
-    var iframe = latch.querySelector("iframe");
-    if (iframe) {
-        latch.removeChild(iframe);
-    } else {
-        iframe = document.createElement("iframe");
-        iframe.width = "100%";
-        iframe.height = "100";
-        iframe.scrolling = "no";
-        iframe.frameBorder = "no";
-        iframe.allow = "autoplay";
-        iframe.src = "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/975902716&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false";
-        latch.appendChild(iframe);
-    }
-}
-
-function playMaaf() {function toggleSound(targetId, otherId, src) {
+function toggleSound(targetId, otherId, src) {
     const target = document.getElementById(targetId);
     const other = document.getElementById(otherId);
 
@@ -63,6 +38,7 @@ function playMaaf() {
         "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/licooys/pamungkas-monolog&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
     );
 }
+
 
         function goComment(){
             var comment = confirm('Beri pendapat anda tentang website ini, komentarmu bisa dilihat sama yang lain juga! Tekan OK untuk ke webnya (secreto.site)')
