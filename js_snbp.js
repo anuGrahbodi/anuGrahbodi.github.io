@@ -22,7 +22,7 @@
                     }
 }
                 
-                function playPamungkas() {
+                function playMaaf() {
             var latch = document.getElementById("latch-screen");
             var pamungkas = document.getElementById("pamungkas-screen");
         
