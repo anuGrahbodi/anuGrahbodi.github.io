@@ -35,7 +35,7 @@ function playMaaf() {
     toggleSound(
         "pamungkas-screen",
         "latch-screen",
-        "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/licooys/pamungkas-monolog&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"
+        "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/licooys/pamungkas-monolog&color=%23ff5500&auto_play=false&hide_related=true&show_comments=true&show_user=false&show_reposts=false&show_teaser=false&visual=false"
     );
 }
 
